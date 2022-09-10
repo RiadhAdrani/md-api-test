@@ -1,0 +1,22 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+    items: [],
+};
+
+const watchListSlice = createSlice({
+    name: "watchlist",
+    initialState,
+    reducers: {
+        addItem: (state, action) => {
+            state.items.push(action.payload);
+        },
+        removeItem: (state, action) => {
+            state.items = state.items.filter((item) => item.id !== action.payload);
+        },
+    },
+});
+
+export const { addItem, removeItem } = watchListSlice.actions;
+
+export default watchListSlice.reducer;
